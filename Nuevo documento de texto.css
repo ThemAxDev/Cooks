@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consentimiento de Cookies</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f4f8;
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 10;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .cookie-banner.hidden {
+            transform: translateX(-50%) translateY(100%);
+            opacity: 0;
+        }
+
+        .cookie-banner p {
+            margin: 0;
+            color: #333;
+        }
+
+        .cookie-banner button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cookie-banner button#acceptButton {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .cookie-banner button#acceptButton:hover {
+            background-color: #218838;
+        }
+
+        .cookie-banner button#declineButton {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .cookie-banner button#declineButton:hover {
+            background-color: #c82333;
+        }
+
+        .full-screen-video {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 20;
+        }
+
+        .full-screen-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cookie-banner" id="cookieBanner">
+        <p>Esta página usa cookies. ¿Aceptas?</p>
+        <button id="acceptButton">Aceptar</button>
+        <button id="declineButton">Declinar</button>
+    </div>
+
+    <div class="full-screen-video" id="acceptVideo">
+        <video src="accept-video.mp4" controls loop></video>
+    </div>
+
+    <div class="full-screen-video" id="declineVideo">
+        <video src="decline-video.mp4" controls loop></video>
+    </div>
+
+    <script>
+        document.getElementById('acceptButton').addEventListener('click', function() {
+            var banner = document.getElementById('cookieBanner');
+            banner.classList.add('hidden');
+            setTimeout(function() {
+                banner.style.display = 'none';
+            }, 300);
+            var video = document.getElementById('acceptVideo');
+            video.style.display = 'block';
+            video.querySelector('video').play();
+        });
+
+        document.getElementById('declineButton').addEventListener('click', function() {
+            var banner = document.getElementById('cookieBanner');
+            banner.classList.add('hidden');
+            setTimeout(function() {
+                banner.style.display = 'none';
+            }, 300);
+            var video = document.getElementById('declineVideo');
+            video.style.display = 'block';
+            video.querySelector('video').play();
+        });
+    </script>
+
+</body>
+</html>
